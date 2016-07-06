@@ -13,20 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.stratio.paas.testsAT.automated.scalability;
+package com.stratio.paas.testsAT.automated.kafka;
 
 import com.stratio.cucumber.testng.CucumberRunner;
 import com.stratio.tests.utils.BaseTest;
 import cucumber.api.CucumberOptions;
 import org.testng.annotations.Test;
 
-@CucumberOptions(features = { "src/test/resources/features/scalability/kafka_scalability.feature" })
-public class kafka_scalability extends BaseTest {
+@CucumberOptions(features = { "src/test/resources/features/automated/kafka/scalability.feature" })
+public class Scalability extends BaseTest {
 
-    public kafka_scalability() {
+    public Scalability() {
     }
 
-    @Test(enabled = true, groups = {"scalability"})
+    @Test(enabled = true, groups = {"kafka", "scalability"})
     public void haftTest() throws Exception {
         new CucumberRunner(this.getClass()).runCukes();
     }
