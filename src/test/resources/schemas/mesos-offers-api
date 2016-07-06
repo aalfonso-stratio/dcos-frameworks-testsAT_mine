@@ -1,0 +1,38 @@
+{
+	  "id": "mesos-offers-api",
+	  "cmd": "app --master=zk://10.200.0.152:2181/mesos --port $PORT0 --hostname $HOST",
+	  "cpus": 0.5,
+	  "mem": 265,
+	  "disk": 100,
+	  "instances": 1,
+	  "container": {
+		"type": "DOCKER",
+		"volumes": [],
+		"docker": {
+		  "image": "sayden/real-time-mesos-offers:1.0.4",
+		  "network": "HOST",
+		  "privileged": false,
+		  "parameters": [],
+		  "forcePullImage": false
+		}
+	  },
+	  "healthChecks": [
+		{
+		  "protocol": "TCP",
+		  "portIndex": 0,
+		  "gracePeriodSeconds": 300,
+		  "intervalSeconds": 60,
+		  "timeoutSeconds": 20,
+		  "maxConsecutiveFailures": 3,
+		  "ignoreHttp1xx": false
+		}
+	  ],
+	  "portDefinitions": [
+		{
+		  "port": 10002,
+		  "protocol": "tcp",
+		  "name": "webui",
+		  "labels": {}
+		}
+	  ]
+}
